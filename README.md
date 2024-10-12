@@ -1,25 +1,18 @@
-# Expo News App Starter Template 👋
+# Wallpaper Project
 
-This is a starter template for the expo news app tutorial on my YouTube channel.
+This project is a wallpaper application built with React Native. It offers users a variety of wallpapers. Users can search for their desired wallpaper through the search feature and apply filters using various filtering tools.
 
-## Get started
+## Used Technologies
 
-1. Install dependencies
+- @expo/vector-icons
+- @gorhom/bottom-sheet
+- @react-navigation/native
+- @shopify/flash-list
+- axios
+- expo-blur
+- react-native-reanimated
+- expo-linear-gradient
 
-   ```bash
-   npm install
-   ```
+## Screen
 
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-Extra dependencies added here
-
-- [Axios](https://www.npmjs.com/package/axios)
-- [AsyncStorage](https://react-native-async-storage.github.io/async-storage/docs/install/)
-- [Expo Linear Gradient](https://docs.expo.dev/versions/latest/sdk/linear-gradient/)
-- [Moment JS](https://www.npmjs.com/package/moment)
-
+![](Screen.gif)

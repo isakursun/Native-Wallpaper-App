@@ -16,11 +16,45 @@ export const CommonFilterRow = ({ data, filterName, filters, setFilters }) => {
     <View style={styles.flexRowWrap}>
       {data &&
         data.map((item, index) => {
+          let isActive = filters && filters[filterName] == item;
+          let backgroundColor = isActive ? theme.colors.neutral(0.7) : "white";
+          let color = isActive ? "white" : theme.colors.neutral(0.7);
+
+          const onSelect = (item) => {
+            setFilters({ ...filters, [filterName]: item });
+          };
           return (
-            <Pressable key={item} style={[styles.outlinedButton]}>
-              <Text style={[styles.outlinedButtonText]}>
+            <Pressable
+              onPress={() => onSelect(item)}
+              key={item}
+              style={[styles.outlinedButton, { backgroundColor }]}
+            >
+              <Text style={[styles.outlinedButtonText, { color }]}>
                 {capitalize(item)}
               </Text>
+            </Pressable>
+          );
+        })}
+    </View>
+  );
+};
+
+export const ColorFilter = ({ data, filterName, filters, setFilters }) => {
+  return (
+    <View style={styles.flexRowWrap}>
+      {data &&
+        data.map((item, index) => {
+          let isActive = filters && filters[filterName] == item;
+          let borderColor = isActive ? theme.colors.neutral(0.4) : "white";
+
+          const onSelect = (item) => {
+            setFilters({ ...filters, [filterName]: item });
+          };
+          return (
+            <Pressable onPress={() => onSelect(item)} key={item}>
+              <View style={[styles.colorWrapper, { borderColor }]}>
+                <View style={[styles.color, { backgroundColor: item }]} />
+              </View>
             </Pressable>
           );
         })}
@@ -36,7 +70,12 @@ const styles = StyleSheet.create({
     fontSize: hp(2.4),
     fontWeight: theme.fontWeights.medium,
     color: theme.colors.neutral(0.8),
-    marginTop:10,
+    marginTop: 10,
+  },
+  flexRowWrap: {
+    gap: 10,
+    flexDirection: "row",
+    flexWrap: "wrap",
   },
   outlinedButton: {
     padding: 8,
@@ -44,6 +83,18 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: theme.colors.grayBG,
     borderRadius: theme.radius.xs,
+    borderCurve: "continuous",
+  },
+  color: {
+    height: 30,
+    width: 40,
+    borderRadius: theme.radius.sm - 3,
+    borderCurve: "continuous",
+  },
+  colorWrapper: {
+    padding: 3,
+    borderRadius: theme.radius.sm,
+    borderWidth: 2,
     borderCurve: "continuous",
   },
 });
